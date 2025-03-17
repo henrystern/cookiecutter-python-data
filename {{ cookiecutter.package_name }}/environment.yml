@@ -1,0 +1,31 @@
+name: {{ cookiecutter.package_name }}
+channels:
+  - conda-forge
+dependencies:
+  - python=3.13
+  # Dataframes
+  - pandas
+  - pyarrow
+  # Plotting
+  - plotly=5
+  - python-kaleido=0.1.0
+  - nbformat # For plotly Mime type rendering
+  # Utilities
+  - tqdm
+  - loguru
+  - ruff
+  # Notebook
+  - ipython
+  - ipykernel
+  {% if cookiecutter.include_mkdocs %}# Docs
+  - mkdocstrings
+  - mkdocstrings-python
+  - mkdocs-material
+  - mkdocs{% endif %}
+  # Other
+  - pip
+  - pip:
+    - -e .
+
+# To install: conda env create -f environment.yml
+# To update: conda env update -f environment.yml --prune

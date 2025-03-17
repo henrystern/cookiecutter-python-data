@@ -1,0 +1,20 @@
+{
+    "project_name": "Project name",
+    "package_name": "{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
+    "author_name": "Henry Stern",
+    "copyright_name": "{{ cookiecutter.author_name }}",
+    "description": "",
+    "open_source_license": ["MIT", "BSD-3-Clause", "No license file"],
+    "include_mkdocs": true,
+    "git_init": true,
+    "__prompts__": {
+        "project_name": "Human-readable project name",
+        "package_name": "Python package name",
+        "author_name": "Your name",
+        "copyright_name": "Name of the project's copyright holder",
+        "description": "A short description of the project",
+        "open_source_license": "Select the project's licence",
+        "include_mkdocs": "Include mkdocs?",
+        "git_init": "Initialize a git repository?"
+    }
+}
