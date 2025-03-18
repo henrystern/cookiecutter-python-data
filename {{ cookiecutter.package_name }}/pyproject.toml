@@ -4,7 +4,7 @@ build-backend = "flit_core.buildapi"
 
 [project]
 name = "{{ cookiecutter.package_name }}"
-version = "2025.03.2"
+version = "{{ cookiecutter.__ymd.replace(".0", ".") }}"
 description = "{{ cookiecutter.description }}"
 authors = [
     { name = "{{ cookiecutter.author_name }}"},

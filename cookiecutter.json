@@ -7,6 +7,7 @@
     "open_source_license": ["MIT", "BSD-3-Clause", "No license file"],
     "include_mkdocs": true,
     "git_init": true,
+    "__ymd": "{% now 'utc', '%Y.%m.%d' %}",
     "__prompts__": {
         "project_name": "Human-readable project name",
         "package_name": "Python package name",
