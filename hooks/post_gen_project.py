@@ -1,7 +1,7 @@
-"""Initialize git repository after creating template."""
-import subprocess
+"""Scripts to run after creating the project. They run from the project directory."""
 
 {% if not cookiecutter.include_mkdocs %}
+# Remove docs/ if not using mkdocs
 from pathlib import Path
 import shutil
 
@@ -11,6 +11,8 @@ if docs_dir.exists():
 {% endif %}
 
 {% if cookiecutter.git_init %}
+# Initialize git repository and first commit
+import subprocess
 subprocess.call(["git", "init"])
 subprocess.call(["git", "add", "*"])
 subprocess.call(["git", "commit", "-m", "Setup project template"])
