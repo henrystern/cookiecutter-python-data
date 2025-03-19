@@ -13,13 +13,25 @@ pip install cookiecutter
 or
 
 ```powershell
-conda install cookiecutter
+conda create -n Cookiecutter python=3.13 cookiecutter
 ```
 
 ## Usage
 
 ```powershell
 cookiecutter https://github.com/henrystern/cookiecutter-python-data
+```
+
+If that seems like too much typing you can set a command alias.
+In powershell you can add these lines to `$profile` and then create a new project with `cc`.
+```powershell
+function Create-Cookiecutter-Project {
+    conda activate Cookiecutter
+    cookiecutter https://github.com/henrystern/cookiecutter-python-data
+    conda deactivate
+}
+
+Set-Alias cc Create-Cookiecutter-Project
 ```
 
 ## Intended project structure
