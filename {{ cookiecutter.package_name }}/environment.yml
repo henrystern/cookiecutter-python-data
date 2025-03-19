@@ -14,8 +14,8 @@ dependencies:
   - loguru
   - ruff
   # Notebook
-  - jupyter
-  {% if cookiecutter.include_mkdocs %}# Docs
+  - jupyter{% if cookiecutter.include_mkdocs %}
+  # Docs
   - mkdocstrings
   - mkdocstrings-python
   - mkdocs-material

@@ -4,10 +4,15 @@
 # Remove docs/ if not using mkdocs
 from pathlib import Path
 import shutil
-
 docs_dir = Path("./docs")
 if docs_dir.exists():
     shutil.rmtree(docs_dir)
+{% endif %}
+
+{% if cookiecutter.open_source_license == "No license file" %}
+# Remove LICENSE if no license selected
+from pathlib import Path
+Path("./LICENSE").unlink(True)
 {% endif %}
 
 {% if cookiecutter.git_init %}

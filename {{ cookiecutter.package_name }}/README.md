@@ -5,8 +5,8 @@
 ## Project structure
 
 ```
-│   environment.yml                       # Conda environment used for project
-│   LICENSE                               # Open-source license
+│   environment.yml                       # Conda environment used for project{% if cookiecutter.open_source_license != "No license file" %}
+│   LICENSE                               # {{ cookiecutter.open_source_license }} license{% endif %}
 │   pyproject.toml                        # Package metadata and configuration
 │   README.md                             # Brief documentation
 ├───data
