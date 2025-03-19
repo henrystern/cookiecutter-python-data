@@ -9,7 +9,7 @@ description = "{{ cookiecutter.description }}"
 authors = [
     { name = "{{ cookiecutter.author_name }}"},
 ]
-license = { file = "LICENSE"}
+{% if cookiecutter.open_source_license != "No license file" %}license = { file = "LICENSE"}{% endif %}
 readme = "README.md"
 classifiers = [
     "Programming Language :: Python :: 3",
