@@ -7,16 +7,14 @@ dependencies:
   - pandas
   - pyarrow
   # Plotting
-  - plotly=5
+  - plotly
   - python-kaleido=0.1.0
-  - nbformat # For plotly Mime type rendering
   # Utilities
   - tqdm
   - loguru
   - ruff
   # Notebook
-  - ipython
-  - ipykernel
+  - jupyter
   {% if cookiecutter.include_mkdocs %}# Docs
   - mkdocstrings
   - mkdocstrings-python
@@ -25,7 +23,8 @@ dependencies:
   # Other
   - pip
   - pip:
-    - -e .
+    - -e .  # Install this project as a package.
 
 # To install: conda env create -f environment.yml
-# To update: conda env update -f environment.yml --prune
+# To use: conda activate {{ cookiecutter.package_name }}
+# To update: conda env update -f environment.yml --prune -n {{ cookiecutter.package_name }}
