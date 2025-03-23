@@ -1,4 +1,4 @@
-"""Configuration parameters for {{ cookiecutter.package_name }}"""
+"""Configuration parameters for {{ cookiecutter.package_name }}."""
 
 from pathlib import Path
 
