@@ -19,11 +19,13 @@ REPORTS_DIR = PROJ_ROOT / "reports"
 FIGURES_DIR = PROJ_ROOT / "figures"
 TABLES_DIR = PROJ_ROOT / "tables"
 
+LOGS_DIR = PROJ_ROOT / "logs"
+
 # If tqdm is installed, configure loguru with tqdm.write
 try:
     from tqdm import tqdm
 
-    logger.remove()
+    logger.remove(0)
     logger.add(lambda msg: tqdm.write(msg, end=""), colorize=True)
-except ModuleNotFoundError:
+except (ModuleNotFoundError, ValueError):
     pass

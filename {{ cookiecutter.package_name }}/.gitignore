@@ -4,4 +4,6 @@ __pycache__/
 
 docs/site/
 
+/logs/
+
 /data/**/*.parquet
