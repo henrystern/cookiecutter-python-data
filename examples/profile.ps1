@@ -32,25 +32,18 @@ function Get-Multiple-Choice {
 }
 
 function New-CookiecutterProject {
-    # Each template is defined as a list of commands to expand into the call to cookiecutter.
     $availableTemplates = @(
         @{ 
             name   = "python-data"; 
-            template = "https://github.com/henrystern/cookiecutter-python-data"; 
-            kwargs = @{} 
+            args = @("https://github.com/henrystern/cookiecutter-python-data")
         }, 
         @{ 
             name   = "python-data-BoC"; 
-            template = "https://github.com/henrystern/cookiecutter-python-data"; 
-            kwargs = @{ checkout = "BoC" } 
+            args = @("https://github.com/henrystern/cookiecutter-python-data"; "-c"; "BoC")
         }
     )
     $chosenTemplate = Get-Multiple-Choice -options $availableTemplates -prompt "Which template? (default 1)"
-    $template = $chosenTemplate.template
-    $kwargs = $($chosenTemplate.kwargs)
-    conda activate cookiecutter # Works better for passing args than conda run
-    cookiecutter $template @kwargs
-    conda deactivate cookiecutter
+    conda run -n cookiecutter --no-capture-output cookiecutter @($chosenTemplate.args)
 }
 
 Set-Alias cc New-CookiecutterProject
