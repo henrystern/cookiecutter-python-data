@@ -22,20 +22,20 @@ requires-python = "~=3.13"
 line-length = 79
 
 [tool.ruff.lint]
-select = [
-    "E4", "E7", "E9", "F", # Ruff defaults
+extend-select = [
     "W",                   # Whitespace
     "N",                   # Naming
     "A",                   # Overshadowing builtins
     "ISC",                 # Implicit string concatenation
-    "PTH",                 # Suggest pathlib instead of os
-    "PD",                  # Pandas best practices
+    "PTH",                 # Require pathlib instead of os
     "D"                    # Require docstrings
 ]
-ignore = ["PD901"] # df variable is justified in general functions
 
 [tool.ruff.lint.pydocstyle]
 convention = "google"
+
+[tool.ruff.lint.extend-per-file-ignores]
+"__init__.py" = ["D104"] # Don't require docstring in __init__
 
 [tool.ruff.lint.isort]
 known-first-party = ["{{ cookiecutter.package_name }}"]
