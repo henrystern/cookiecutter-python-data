@@ -1,3 +1,3 @@
 # Getting started
 
-::: src.{{ cookiecutter.package_name }}.config
+::: {{ cookiecutter.package_name }}.config
