@@ -34,6 +34,8 @@ function Create-Cookiecutter-Project {
 Set-Alias cc Create-Cookiecutter-Project
 ```
 
+A more complicated example (for managing multiple templates) is shown in [profile.ps1](examples/profile.ps1)
+
 ## Intended project structure
 
 ```
