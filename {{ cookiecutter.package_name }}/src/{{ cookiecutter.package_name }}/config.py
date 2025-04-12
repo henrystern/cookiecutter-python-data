@@ -16,8 +16,8 @@ PROCESSED_DATA_DIR = DATA_DIR / "processed"
 MODELS_DIR = PROJ_ROOT / "models"
 
 REPORTS_DIR = PROJ_ROOT / "reports"
-FIGURES_DIR = PROJ_ROOT / "figures"
-TABLES_DIR = PROJ_ROOT / "tables"
+FIGURES_DIR = REPORTS_DIR / "figures"
+TABLES_DIR = REPORTS_DIR / "tables"
 
 LOGS_DIR = PROJ_ROOT / "logs"
 
