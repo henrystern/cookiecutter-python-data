@@ -4,6 +4,6 @@ __pycache__/
 
 docs/site/
 
-/logs/
+/logs/**/*.log
 
 /data/**/*.parquet
