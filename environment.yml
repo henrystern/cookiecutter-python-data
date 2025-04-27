@@ -1,4 +1,4 @@
-name: Cookiecutter
+name: cookiecutter
 channels:
   - conda-forge
 dependencies:
