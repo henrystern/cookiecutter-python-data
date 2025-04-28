@@ -22,8 +22,10 @@ ARCHIVE_DIR := ./archive/$(CURRENT_DATE)
 
 all: env
 
-env: environment_frozen.yml
+env:
 	@echo "Creating conda environment from $(ENV_YML_FREEZE)..."
+	@# This is for recreating the replication environment from $(ENV_YML_FREEZE). 
+	@# If $(ENV_YML_FREEZE) does not exist use `make env-update` instead.
 	@mamba env create -f $(ENV_YML_FREEZE) -n $(ENV_NAME)
 
 environment_frozen.yml: $(ENV_YML)
@@ -61,8 +63,7 @@ clean-pycache:
 clean: clean-output clean-pycache
 
 archive:
-	@# If archive already exists then add a suffix to the current date for this archive.
-	@# Then loop over OUTPUT_DIRS and add their content to the archive dir.
+	@# If an archive already exists for today, we add a suffix to the current date for this archive.
 	@new_archive_dir=$(ARCHIVE_DIR); \
 	suffix=2; \
 	while [ -d "$$new_archive_dir" ]; do \
