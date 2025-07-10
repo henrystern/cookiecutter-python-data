@@ -1,22 +1,17 @@
 [build-system]
-
 requires = ["flit_core >=3.2,<4"]
 build-backend = "flit_core.buildapi"
 
 [project]
 name = "{{ cookiecutter.package_name }}"
-version = "{{ cookiecutter.__ymd.replace(".0", ".") }}"
+version = "0.1"
 description = "{{ cookiecutter.description }}"
 authors = [
     { name = "{{ cookiecutter.author_name }}"},
 ]{% if cookiecutter.open_source_license != "No license file" %}
 license = { file = "LICENSE"}{% endif %}
 readme = "README.md"
-classifiers = [
-    "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: MIT License"
-]
-requires-python = "~=3.13"
+requires-python = ">=3.13, <4"
 
 [tool.ruff]
 line-length = 79
@@ -40,3 +35,9 @@ convention = "google"
 [tool.ruff.lint.isort]
 known-first-party = ["{{ cookiecutter.package_name }}"]
 force-sort-within-sections = true
+
+[tool.pyright]
+typeCheckingMode = "standard"
+include = ["src"]
+ignore = ["\\Interactive-*.interactive.py"]
+reportMissingParameterType = true

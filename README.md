@@ -37,7 +37,6 @@ A more complicated example (for managing multiple templates) is shown in [profil
 ## Intended project structure
 
 ```
-│   environment.yml                       # Conda environment used for project
 │   LICENSE                               # Open-source license
 │   pyproject.toml                        # Package metadata and configuration
 │   README.md                             # Brief documentation

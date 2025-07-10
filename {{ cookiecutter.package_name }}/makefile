@@ -1,9 +1,5 @@
-ENV_NAME := {{ cookiecutter.package_name }}
-ENV_YML := ./environment.yml
-ENV_YML_FREEZE := ./environment_frozen.yml
 MKDOCS_CONFIG := ./docs/mkdocs.yml
 SRC := ./src/{{ cookiecutter.package_name }}
-
 DATA_DIR := ./data/
 RAW := $(DATA_DIR)/raw
 INTERIM := $(DATA_DIR)/interim
@@ -15,27 +11,15 @@ CURRENT_DATE := $(shell date +'%Y-%m-%d')
 ARCHIVE_DIR := ./archive/$(CURRENT_DATE)
 
 .PHONY: all \
-	env env-update \
 	docs \
-	format lint \
+	env format lint \
 	clean clean-output clean-pycache archive
 
 all: env
 
 env:
-	@echo "Creating conda environment from $(ENV_YML_FREEZE)..."
-	@# This is for recreating the replication environment from $(ENV_YML_FREEZE). 
-	@# If $(ENV_YML_FREEZE) does not exist use `make env-update` instead.
-	@mamba env create -f $(ENV_YML_FREEZE) -n $(ENV_NAME)
-
-environment_frozen.yml: $(ENV_YML)
-	@echo "Updating conda environment from $(ENV_YML)"
-	@mamba env update -f $(ENV_YML) --prune -n $(ENV_NAME)
-	@mamba env export -n $(ENV_NAME) > $(ENV_YML_FREEZE)
-	@# Remove the prefix from the frozen environment as it is an absolute path.
-	@sed -i "/^prefix:/d" $(ENV_YML_FREEZE)
-
-env-update: environment_frozen.yml
+	@echo "Syncinc virtual environment with uv..."
+	@uv sync
 
 docs:
 	@echo "Serving documentation..."

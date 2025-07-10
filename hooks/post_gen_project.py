@@ -22,3 +22,9 @@ subprocess.call(["git", "init"])
 subprocess.call(["git", "add", "*"])
 subprocess.call(["git", "commit", "-m", "Setup project template"])
 {% endif %}
+
+{% if cookiecutter.add_common_dependencies %}
+import subprocess
+subprocess.call(["uv", "add", "polars[pyarrow]", "pandas[performance]", "plotly[kaleido]", "tqdm", "loguru", "--no-sync"])
+subprocess.call(["uv", "add", "--dev", "ipykernel", "nbformat", "--no-sync"])
+{% endif %}
