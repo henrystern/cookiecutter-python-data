@@ -5,8 +5,7 @@
 ## Project structure
 
 ```
-│   environment.yml                       # Conda environment used for project{% if cookiecutter.open_source_license != "No license file" %}
-│   LICENSE                               # {{ cookiecutter.open_source_license }} license{% endif %}
+{% if cookiecutter.open_source_license != "No license file" %}│   LICENSE                               # {{ cookiecutter.open_source_license }} license{% endif %}
 │   pyproject.toml                        # Package metadata and configuration
 │   README.md                             # Brief documentation
 ├───data
@@ -29,19 +28,21 @@
 
 ## Python environment
 
-To replicate the environment you will need a [miniforge conda distribution](https://github.com/conda-forge/miniforge).
+The python environment is managed by [uv](https://docs.astral.sh/uv/getting-started/installation/).
 
-Once conda is installed and initialized, create the environment by running
+Once uv is installed, create the environment by running:
 
-```powershell
-conda env create -f environment.yml
+```bash
+uv sync
 ```
 
-Then activate the environment with
+Then activate the environment with:
 
-```powershell
-conda activate {{ cookiecutter.package_name }}
+```bash
+source .venv/bin/activate
 ```
+
+If you are using vscode, set your python interpretor to `.venv/bin/python`.
 
 {% if cookiecutter.include_mkdocs %}
 ## Code documentation
@@ -50,7 +51,14 @@ The code is documented with mkdocs.
 
 To view the documentation run
 
-```powershell
+```bash
 mkdocs serve -f ./docs/mkdocs.yml -o
 ```
+
+If mkdocs is unavailable you can install it globally with:
+
+```bash
+uv tool install mkdocs --with mkdocs-material --with mkdocstrings[python]
+```
+
 {% endif %}

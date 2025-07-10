@@ -7,7 +7,7 @@
     "copyright_name": "{{ cookiecutter.author_name }}",
     "include_mkdocs": true,
     "git_init": true,
-    "__ymd": "{% now 'utc', '%Y.%m.%d' %}",
+    "add_common_dependencies": true,
     "__prompts__": {
         "project_name": "Human-readable project name",
         "package_name": "Python package name",
