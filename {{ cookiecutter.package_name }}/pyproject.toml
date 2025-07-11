@@ -30,7 +30,7 @@ extend-select = [
 convention = "google"
 
 [tool.ruff.lint.extend-per-file-ignores]
-"__init__.py" = ["D104"] # Don't require docstring in __init__
+"__init__.py" = ["D104", "F401"]
 
 [tool.ruff.lint.isort]
 known-first-party = ["{{ cookiecutter.package_name }}"]
