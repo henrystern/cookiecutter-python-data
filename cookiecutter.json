@@ -17,5 +17,6 @@
         "open_source_license": "Select the project's licence",
         "include_mkdocs": "Include mkdocs?",
         "git_init": "Initialize a git repository?"
+        "add_common_dependencies": "Initialize uv environment?"
     }
 }
