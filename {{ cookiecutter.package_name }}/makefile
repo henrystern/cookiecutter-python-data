@@ -18,7 +18,7 @@ ARCHIVE_DIR := ./archive/$(CURRENT_DATE)
 all: env
 
 env:
-	@echo "Syncinc virtual environment with uv..."
+	@echo "Syncing virtual environment with uv..."
 	@uv sync
 
 docs:
