@@ -5,6 +5,9 @@ RAW := $(DATA_DIR)/raw
 INTERIM := $(DATA_DIR)/interim
 PROCESSED := $(DATA_DIR)/processed
 
+# Get the current project version from pyproject.toml
+VERSION := $(shell grep '^version =' pyproject.toml | sed 's/version = "\(.*\)"/\1/')
+
 # The archive target copies output directories to a folder with today's date
 OUTPUT_DIRS := logs models reports $(INTERIM) $(PROCESSED)
 CURRENT_DATE := $(shell date +'%Y-%m-%d')
@@ -18,7 +21,7 @@ ARCHIVE_DIR := ./archive/$(CURRENT_DATE)
 all: env
 
 env:
-	@echo "Syncinc virtual environment with uv..."
+	@echo "Syncing virtual environment with uv..."
 	@uv sync
 
 docs:
@@ -61,3 +64,15 @@ archive:
 		mkdir -p $$new_archive_dir/$$dir/; \
 		cp -r $$dir/* $$new_archive_dir/$$dir/; \
 	done
+
+release: all
+	@echo "Creating GitHub release for v$(VERSION)..."
+	@zip -r raw_data.zip $(RAW) \
+		--exclude=$(RAW)/.gitkeep
+	@gh release create "v$(VERSION)" \
+		--title "Release v$(VERSION)" \
+		--notes "Our raw data is attached to this release in \`raw_data.zip\`. The contents of this archive should be extracted into \`data/raw\`." \
+		--target main \
+		--prerelease \
+		raw_data.zip
+	@rm -f raw_data.zip
